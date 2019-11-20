@@ -1,0 +1,85 @@
+%%
+%% Edit the following two statements with the title of your report and the names of your team members.
+
+\def\mytitle{My Title}
+
+\def\myauthor{Firstname1 Lastname1, Fname2 Lname2, Fname3 Lname3, \\
+and Fname4 Lname4}
+
+
+%%=========================================
+%%
+%%  Do no edit the following block
+%%
+%%VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+
+\ifdefined\CLINICMAIN
+(by \myauthor)
+
+\else
+
+\documentclass{article}
+\usepackage{graphicx}
+%\input{clinicPreamble}
+\graphicspath{{images/}}
+%
+\title{\mytitle}
+\author{\myauthor}
+\begin{document}
+\maketitle
+\fi
+%
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+%  DO NOT EDIT ABOVE THIS LINE
+%===========================================
+
+%  Your Report Starts Here.
+\graphicspath{{images/}}
+
+\section*{Abstract} Your abstract should concisely state what is in your report.
+\\
+\newline
+\noindent \textbf{\textit{Keywords - key1, key2, key3}}
+
+\newpage
+
+\section{Introduction} \label{grp1:intro}
+
+The introduction introduces motivates your problem.
+
+\section{Background} \label{grp1:background}
+
+Describe background information that is needed to understand the rest of the report and to put your work into context of the literature
+
+\section{Methods} \label{grp1:methods}
+
+Describe what you did.
+
+\section{Results} \label{grp1:results}
+
+Report on your results. 
+
+\includegraphics[scale=.5]{gplot.png}
+
+\section{Discussion} \label{grp1:discussion}
+
+Discuss your results
+
+\section{Conclusions/Future Work}
+Summarize and conclude and describe any future work that you might do.
+
+
+ \label{grp1:conclusions}
+
+%%=======================================
+%%  DO NOT EDIT BELOW THIS LINE
+%%
+%% VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+\ifdefined\CLINICMAIN
+\else
+\end{document}
+\fi
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+%  DO NOT EDIT ABOVE THIS LINE
+%=========================================
+
