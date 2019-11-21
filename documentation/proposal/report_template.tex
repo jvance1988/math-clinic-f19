@@ -94,7 +94,26 @@ Using the way that the landfills and storage locations are visited allows the el
 Figure 1. Stars
 \end{center}
 
+Since the problem doesn't actually consist solely of switches it is necessary to expand the star solution to include pickup and dropoffs. This provides a route of landfill, drop-off, pick-up, landfill for a driver, creating a \emph{triangle} (figure 2). These triangle routes allow for further optimization as long as the optimal triangles are chosen.
 
+\begin{center}
+\begin{tikzpicture}
+
+  \draw (0,0) node[vx]{};
+    \draw[edge] (0,0) -- ++(280:.5) node[vx, inner sep=1.2pt]{};
+    \draw[edge] (0,0) -- ++(100:.7) node[vx, inner sep=1.2pt]{};
+    \draw[edge] (0,0) -- ++(210:.9) node[vx, inner sep=1.2pt]{};
+    \draw[edge] (0,0) -- ++(50:.8) node[vx, inner sep=1.2pt]{};
+    \draw[edge] (0,0) -- ++(160:.3) node[vx, inner sep=1.2pt]{};
+    \draw[edge] (0,0) -- ++(60:.6) node[vx, inner sep=1.2pt]{};
+
+    \draw[edge] (280:.5) -- (210:.9);
+    \draw[edge] (60:.6) -- (100:.7);
+\end{tikzpicture}\\
+Figure 2. Triangles
+\end{center}
+
+To make this decision, we can construct a bipartite graph, one set containing the drop-offs, and the other containing pick-ups, and the existence of an edge between a drop-off and pick-up means that they are \emph{compatible} (their constraints can work together). The weight of the edge between a drop-off and a pick-up is calculated as the difference between doing each normally (star method) and doing them combined as a triangle. In this graph, a matching pairs up drop-offs and pick-ups to be completed as a triangle. A minimum matching in this graph gives us the best possible choice of triangles in order to make the route take the least amount of time. 
 
 \section{Results} \label{grp1:results}
 
