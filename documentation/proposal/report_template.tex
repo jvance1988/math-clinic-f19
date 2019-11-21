@@ -3,8 +3,8 @@
 
 \def\mytitle{The Star Solution}
 
-\def\myauthor{Nick Mako, Dalton Burke, James Vance, \\
-and Komi Agbo}
+\def\myauthor{Komi Agbo, Dalton Burke, Nick Mako,\\
+and James Vance}
 
 
 %%=========================================
@@ -47,15 +47,54 @@ and Komi Agbo}
 
 Sam's Hauling, Inc. provides small dumpsters of various sizes to homeowners, contractors, realtors and property managers throughout the metro Denver area. They have a limited number of trucks with which to do these pickups and deliveries and in addition some customers set time windows for said pickups and deliveries. In addition, they have multiple depots that they store the dumpsters and the trucks have varying capacities. Currently, the pickup and delivery of these dumpsters is scheduled by a single individual using only Microsoft Excel. This method for solving it is very time intensive and is less likely to be the most efficient solution. It is quite likely then, that the implementation of some heuristic or metaheuristic could increase the efficiency of this process by a significant margin.
 
-At first glance this problem seems like some variation of the Vehicle Routing Problem. Our goal is to simplify the problem in a manner that would make it more like a Traveling Salesman Problem and thus simpler to solve for an optimal solution. In order to do this, we will first implement what we are calling the Star Method. Following the successful implementation of the Star Method given the necessary constraints of the problem we will then use what we call the Triangle Method
+At first glance this problem seems like some variation of the Vehicle Routing Problem (VRP). It is possible however, to simplify the problem in a manner that would make it more like a Traveling Salesman Problem (TSP) and thus simpler to solve for an optimal solution. In order to do this, we will first implement what we are calling the Star Method. Following the successful implementation of the Star Method given the necessary constraints of the problem we will then use what we call the Triangle Method. After a successful implementation of the Triangle Method with the necessary constraints the next step is to assign routes to each driver.
 
 
 \section{Background} \label{grp1:background}
 
-Our solution was based most closely on the Travelling Salesman Prob
+Our solution was based most closely on the TSP
+
 \section{Methods} \label{grp1:methods}
 
-Describe what you did.
+Using the way that the landfills and storage locations are visited allows the elimination of the ordering constraint that would be imposed by the VRP. Then treating each service site as a switch allows for the further simplification of the problem. With every service site a switch then drivers would move from the nearest landfill for delivery portion and then back to the nearest landfill after the pickup portion. Filling the routes with this data then creates several \emph{stars} with each landfill being a center and the service sites around it being the points as can be seen in figure 1. Each service site around a star can then be visited in any order without an impact on the cost. 
+\begin{center}
+\begin{tikzpicture}
+  \foreach \y in {0,2} {
+    \foreach \x in {0,2} {
+      \draw (\x,\y) node[vx]{};
+    }
+    \draw[edge] (0,0) -- ++(280:.5) node[vx, inner sep=1.2pt]{};
+    \draw[edge] (0,0) -- ++(100:.7) node[vx, inner sep=1.2pt]{};
+    \draw[edge] (0,0) -- ++(190:.9) node[vx, inner sep=1.2pt]{};
+    \draw[edge] (0,0) -- ++(00:.2) node[vx, inner sep=1.2pt]{};
+    \draw[edge] (0,0) -- ++(60:.3) node[vx, inner sep=1.2pt]{};
+    \draw[edge] (0,0) -- ++(120:.5) node[vx, inner sep=1.2pt]{};
+
+    \draw[edge] (0,2) -- ++(280:.5) node[vx, inner sep=1.2pt]{};
+    \draw[edge] (0,2) -- ++(100:.7) node[vx, inner sep=1.2pt]{};
+    \draw[edge] (0,2) -- ++(0:.9) node[vx, inner sep=1.2pt]{};
+    \draw[edge] (0,2) -- ++(50:.3) node[vx, inner sep=1.2pt]{};
+    \draw[edge] (0,2) -- ++(160:.5) node[vx, inner sep=1.2pt]{};
+
+    \draw[edge] (2,2) -- ++(280:.5) node[vx, inner sep=1.2pt]{};
+    \draw[edge] (2,2) -- ++(100:.7) node[vx, inner sep=1.2pt]{};
+    \draw[edge] (2,2) -- ++(210:.9) node[vx, inner sep=1.2pt]{};
+    \draw[edge] (2,2) -- ++(50:.8) node[vx, inner sep=1.2pt]{};
+    \draw[edge] (2,2) -- ++(160:.3) node[vx, inner sep=1.2pt]{};
+    \draw[edge] (2,2) -- ++(60:.6) node[vx, inner sep=1.2pt]{};
+
+    \draw[edge] (2,0) -- ++(280:.9) node[vx, inner sep=1.2pt]{};
+    \draw[edge] (2,0) -- ++(100:.7) node[vx, inner sep=1.2pt]{};
+    \draw[edge] (2,0) -- ++(240:.4) node[vx, inner sep=1.2pt]{};
+    \draw[edge] (2,0) -- ++(80:.8) node[vx, inner sep=1.2pt]{};
+    \draw[edge] (2,0) -- ++(160:.2) node[vx, inner sep=1.2pt]{};
+    \draw[edge] (2,0) -- ++(20:.8) node[vx, inner sep=1.2pt]{};
+  }
+\end{tikzpicture}\\
+Figure 1. Stars
+\end{center}
+
+
 
 \section{Results} \label{grp1:results}
 
