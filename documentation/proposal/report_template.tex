@@ -34,6 +34,8 @@ and James Vance}
 %===========================================
 
 %  Your Report Starts Here.
+\tikzset{vx/.style={inner sep=1.7pt, outer sep=0pt,circle, fill}}
+\tikzset{edge/.style={color=black,line width=.5}}
 \graphicspath{{images/}}
 
 \section*{Abstract} Your abstract should concisely state what is in your report.
@@ -113,7 +115,10 @@ Since the problem doesn't actually consist solely of switches it is necessary to
 Figure 2. Triangles
 \end{center}
 
-To make this decision, we can construct a bipartite graph, one set containing the drop-offs, and the other containing pick-ups, and the existence of an edge between a drop-off and pick-up means that they are \emph{compatible} (their constraints can work together). The weight of the edge between a drop-off and a pick-up is calculated as the difference between doing each normally (star method) and doing them combined as a triangle. In this graph, a matching pairs up drop-offs and pick-ups to be completed as a triangle. A minimum matching in this graph gives us the best possible choice of triangles in order to make the route take the least amount of time. 
+To make this decision, we can construct a bipartite graph, one set containing the drop-offs, and the other containing pick-ups, and the existence of an edge between a drop-off and pick-up means that they are \emph{compatible} (their constraints can work together). The weight of the edge between a drop-off and a pick-up is calculated as the difference between doing each normally (star method) and doing them combined as a triangle. In this graph, a matching pairs up drop-offs and pick-ups to be completed as a triangle. A minimum matching in this graph gives us the best possible choice of triangles in order to make the route take the least amount of time.
+
+Due to the nature of the problem simply choosing the most optimum triangle alone isn't enough to give an optimal solution. Transistions between the landfill sites must also be considered. In order to determine each transitio\emph{n min(〖RN〗_i-〖RT〗_i)} for i=0 to i=n is caluculated, where RN is the route cost normally, RT is the cost of doing the transition, and n is the number of routes that are unassigned. In the case where pairs are constrained min(〖RN〗_i-〖RT〗_i) will always be positive since doing the route normally will always be the same or shorter. However in the case where pairs are non-constrained and can be made between zones the cost of doing a route normally can be less than the cost of doing a transition.
+
 
 \section{Results} \label{grp1:results}
 
